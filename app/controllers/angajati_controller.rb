@@ -18,7 +18,9 @@ class AngajatiController < ApplicationController
 
   def destroy
     @angajat = Angajat.find(params[:id])
+
     @angajat.destroy
+
     head :no_content
   end
 
@@ -27,7 +29,6 @@ class AngajatiController < ApplicationController
   def angajat_params
     params.require(:angajati).permit(:name, :position, :department)
   end
-
 
   def handle_missing_params(exception)
     render json: { error: exception.message }, status: :bad_request
