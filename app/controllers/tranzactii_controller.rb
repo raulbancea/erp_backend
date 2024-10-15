@@ -4,10 +4,8 @@ class TranzactiiController < ApplicationController
   def index
     @tranzactii = Transaction.all
 
-    # Assuming you have an associated file with transactions
     tranzactii_with_urls = @tranzactii.map do |tranzactie|
       tranzactie_hash = tranzactie.as_json
-      # Here, add a file_url if there's an associated file
       tranzactie_hash[:file_url] = tranzactie.file.attached? ? url_for(tranzactie.file) : nil
       tranzactie_hash
     end
@@ -27,7 +25,9 @@ class TranzactiiController < ApplicationController
 
   def destroy
     @tranzactie = Transaction.find(params[:id])
+
     @tranzactie.destroy
+
     head :no_content
   end
 
