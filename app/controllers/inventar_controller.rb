@@ -7,6 +7,7 @@ class InventarController < ApplicationController
 
   def create
     @inventar = Inventar.new(inventar_params)
+
     if @inventar.save
       render json: @inventar, status: :created
     else
@@ -16,7 +17,9 @@ class InventarController < ApplicationController
 
   def destroy
     @inventar = Inventar.find(params[:id])
+
     @inventar.destroy
+
     head :no_content
   end
 
