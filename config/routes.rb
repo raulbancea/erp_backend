@@ -1,3 +1,6 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  resources :inventar, only: [:index, :create, :destroy]
+  resources :tranzactii, only: [:index, :create, :destroy]
+  resources :angajati, only: [:index, :create, :destroy]
+  resources :documente, only: [:index, :create, :destroy]
 end

@@ -1,16 +1,7 @@
 class TranzactiiController < ApplicationController
-  include Rails.application.routes.url_helpers
-
   def index
     @tranzactii = Transaction.all
-
-    tranzactii_with_urls = @tranzactii.map do |tranzactie|
-      tranzactie_hash = tranzactie.as_json
-      tranzactie_hash[:file_url] = tranzactie.file.attached? ? url_for(tranzactie.file) : nil
-      tranzactie_hash
-    end
-
-    render json: tranzactii_with_urls
+    render json: @tranzactii
   end
 
   def create
@@ -25,15 +16,13 @@ class TranzactiiController < ApplicationController
 
   def destroy
     @tranzactie = Transaction.find(params[:id])
-
     @tranzactie.destroy
-
     head :no_content
   end
 
   private
 
   def tranzactie_params
-    params.require(:transaction).permit(:product_name, :quantity, :date)
+    params.require(:transaction).permit(:product_name, :quantity, :date, :transaction_type)
   end
 end
