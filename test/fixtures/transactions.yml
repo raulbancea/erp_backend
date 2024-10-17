@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2024-09-27
+  firm: MyString
+  amount: 9.99
+  transaction_type: MyString
+
+two:
+  date: 2024-09-27
+  firm: MyString
+  amount: 9.99
+  transaction_type: MyString

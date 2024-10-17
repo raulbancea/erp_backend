@@ -1,0 +1,2 @@
+module AngajatiHelper
+end
