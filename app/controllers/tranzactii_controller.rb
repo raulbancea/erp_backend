@@ -16,7 +16,9 @@ class TranzactiiController < ApplicationController
 
   def destroy
     @tranzactie = Transaction.find(params[:id])
+
     @tranzactie.destroy
+
     head :no_content
   end
 
